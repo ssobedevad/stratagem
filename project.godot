@@ -1,0 +1,50 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Strategem"
+run/main_scene="uid://cf5tmkqkwsqro"
+config/features=PackedStringArray("4.7", "Mobile")
+config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+
+[importer_defaults]
+
+aseprite_wizard.plugin.static-texture={
+"first_frame_only": false,
+"layer/exclude_layers_pattern": "",
+"layer/only_visible_layers": false,
+"layer/split_layers": true,
+"sheet/scale": 1,
+"sheet/sheet_columns": 1,
+"sheet/sheet_type": "packed"
+}
+aseprite_wizard.plugin.static-texture-split={
+&"sheet/sheet_columns": 1
+}
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
+renderer/rendering_method="mobile"
+2d/snap/snap_2d_transforms_to_pixel=true

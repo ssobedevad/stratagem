@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dr1b26tf2xyx2"
+path="res://.godot/imported/cannon_turret.aseprite-b42b5a57a60656bc5ab664c1fda4964b.res"
+
+[deps]
+
+source_file="res://Game/Buildings/Towers/cannon_turret.aseprite"
+dest_files=["res://.godot/imported/cannon_turret.aseprite-b42b5a57a60656bc5ab664c1fda4964b.res"]
+
+[params]
+

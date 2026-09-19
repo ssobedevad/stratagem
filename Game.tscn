@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://cf5tmkqkwsqro"]
+
+[ext_resource type="Script" uid="uid://wynjjn4jrr7v" path="res://UI/Game/LevelCreator/building_shop.gd" id="1_r0x5m"]
+[ext_resource type="TileSet" uid="uid://dr8pgmd3hr0cg" path="res://Game/Map/map_tileset.tres" id="1_sb48q"]
+[ext_resource type="PackedScene" uid="uid://c1wls271i85ln" path="res://UI/Game/LevelCreator/building_list_item.tscn" id="1_t88pq"]
+[ext_resource type="Script" uid="uid://cj7w3bi6un1hp" path="res://Game/Map/game_tile_map_builder.gd" id="2_u44n3"]
+[ext_resource type="PackedScene" uid="uid://cu6l6itcsy4f7" path="res://Game/Buildings/Towers/cannon_tower.tscn" id="3_u44n3"]
+[ext_resource type="Script" uid="uid://bqghexguncsik" path="res://Game/Map/building_place_indicator.gd" id="4_sb48q"]
+
+[node name="Node2D" type="Node2D" unique_id=1918227097]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=871307937]
+anchor_mode = 0
+
+[node name="UI" type="Control" parent="Camera2D" unique_id=526975781]
+z_index = 1
+propagate_maximum_size = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="FoldableContainer" type="FoldableContainer" parent="Camera2D/UI" unique_id=686904569 node_paths=PackedStringArray("hbox_container", "map_builder")]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+title_alignment = 1
+title_position = 1
+script = ExtResource("1_r0x5m")
+building_list_item = ExtResource("1_t88pq")
+hbox_container = NodePath("ScrollContainer/HBoxContainer")
+map_builder = NodePath("../../TileMapLayer")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Camera2D/UI/FoldableContainer" unique_id=1607175446]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/UI/FoldableContainer/ScrollContainer" unique_id=36148308]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Camera2D" unique_id=1303562051]
+position = Vector2(576, 324)
+tile_set = ExtResource("1_sb48q")
+script = ExtResource("2_u44n3")
+building_objects = Array[PackedScene]([ExtResource("3_u44n3")])
+height = 20
+width = 20
+
+[node name="BuildingPlaceIndicator" type="Node2D" parent="Camera2D/TileMapLayer" unique_id=1556383371 node_paths=PackedStringArray("tile_map")]
+physics_interpolation_mode = 2
+script = ExtResource("4_sb48q")
+tile_map = NodePath("..")

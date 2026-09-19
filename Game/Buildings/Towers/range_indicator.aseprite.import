@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b5xuslyb8vpss"
+path="res://.godot/imported/range_indicator.aseprite-e886fcbe5b90738b80ef9138e492ec01.res"
+
+[deps]
+
+source_file="res://Game/Buildings/Towers/range_indicator.aseprite"
+dest_files=["res://.godot/imported/range_indicator.aseprite-e886fcbe5b90738b80ef9138e492ec01.res"]
+
+[params]
+
