@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cv5i2yof24hy6"
+path="res://.godot/imported/spawn.aseprite-5f7073025bdabbacf3c7bff663b59c6b.res"
+
+[deps]
+
+source_file="res://Game/Map/spawn.aseprite"
+dest_files=["res://.godot/imported/spawn.aseprite-5f7073025bdabbacf3c7bff663b59c6b.res"]
+
+[params]
+

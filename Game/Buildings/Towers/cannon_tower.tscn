@@ -49,7 +49,7 @@ _top_right = Vector2i(2, -1)
 _bottom_left = Vector2i(0, 1)
 _pivot = Vector2(8, -8)
 _max_health = 125
-_health_bar = NodePath("ProgressBar")
+_health_bar = NodePath("HealthBar")
 _hitbox = NodePath("Base/StaticBody2D")
 _base = NodePath("Base")
 _name = "Cannon Tower"
@@ -152,7 +152,7 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "ff7c410bf0263ba425592dd08633c6db"
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=240212525]
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=240212525]
 visible = false
 anchors_preset = -1
 offset_left = -20.0

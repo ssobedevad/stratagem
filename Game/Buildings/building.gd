@@ -11,7 +11,12 @@
 @export var _cost : int
 @export var _description : String
 
+var tile_pos : Vector2i
+
 var placed : bool = false
+
+func get_building_id() -> int:
+	return -1
 
 func get_base_texture():
 	return _base.texture

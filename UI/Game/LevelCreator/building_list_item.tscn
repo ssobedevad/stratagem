@@ -1,14 +1,12 @@
 [gd_scene format=3 uid="uid://c1wls271i85ln"]
 
 [node name="BuildingListItem" type="Control" unique_id=1333512541]
-custom_minimum_size = Vector2(168, 168)
-custom_maximum_size = Vector2(168, 168)
+custom_minimum_size = Vector2(168, 48)
+custom_maximum_size = Vector2(168, 48)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -984.0
-offset_bottom = -480.0
+anchors_preset = 0
+offset_right = 168.0
+offset_bottom = 168.0
 grow_horizontal = 2
 grow_vertical = 2
 tooltip_text = "BUILDING NAME
@@ -22,89 +20,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-alignment = 0
+theme_override_constants/outline_size = 8
+text = "Text"
 icon_alignment = 1
-
-[node name="Base" type="TextureRect" parent="Cannon_Tower" unique_id=406441546]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 10.0
-offset_right = -20.0
-offset_bottom = -30.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-stretch_mode = 4
-metadata/_aseprite_wizard_interface_config_ = {
-"layer_section": true,
-"pending_changes": {}
-}
-metadata/_aseprite_wizard_config_ = {
-"convert_fps_field": 60.0,
-"convert_ms_field": 16.0,
-"convert_to_fps": false,
-"embed_tex": true,
-"i_mode": 1,
-"keep_anim_length": false,
-"layers": ["Base"],
-"o_ex_p": "",
-"o_folder": "",
-"o_name": "",
-"only_visible": false,
-"player": "",
-"scale": "1.0",
-"slice": "",
-"source": "res://Game/Buildings/Towers/cannon_turret.aseprite",
-"source_uid": 8406256805798935633
-}
-metadata/_aseprite_wizard_source_file_hash_ = "e84cb8c58b5afba5f5da76f65eeaf2b2"
-
-[node name="Gun" type="TextureRect" parent="Cannon_Tower/Base" unique_id=173275082]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-stretch_mode = 4
-metadata/_aseprite_wizard_interface_config_ = {
-"layer_section": true,
-"pending_changes": {}
-}
-metadata/_aseprite_wizard_config_ = {
-"convert_fps_field": 60.0,
-"convert_ms_field": 16.0,
-"convert_to_fps": false,
-"embed_tex": true,
-"i_mode": 1,
-"keep_anim_length": false,
-"layers": ["Gun"],
-"o_ex_p": "",
-"o_folder": "",
-"o_name": "",
-"only_visible": false,
-"player": "",
-"scale": "1.0",
-"slice": "",
-"source": "res://Game/Buildings/Towers/cannon_turret.aseprite",
-"source_uid": 8406256805798935633
-}
-metadata/_aseprite_wizard_source_file_hash_ = "e84cb8c58b5afba5f5da76f65eeaf2b2"
-
-[node name="Label" type="Label" parent="Cannon_Tower" unique_id=931748253]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Unknown Building"
-horizontal_alignment = 1

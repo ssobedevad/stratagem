@@ -28,7 +28,7 @@ func can_place_building(building: Building, pos: Vector2i) -> bool:
 	for x in range(bottom_left.x,top_right.x):
 		for y in range(top_right.y,bottom_left.y):
 			var query_pos = pos + Vector2i(x,y)
-			if !tileBuildings.has(query_pos) || tileBuildings[query_pos] != null :
+			if !tile_buildings.has(query_pos) || tile_buildings[query_pos] != null :
 				return false
 	return true
 
@@ -48,12 +48,27 @@ func _place_building(pos: Vector2i) -> bool:
 		global_cell_pos += building_inst.get_pivot()
 		building_inst.global_position = global_cell_pos
 		building_inst._on_place()
+		building_inst.tile_pos = pos
 		add_child(building_inst)
+		all_buildings.append(building_inst)
 		var top_right = building_inst.get_top_right()
 		var bottom_left = building_inst.get_bottom_left()
 		for x in range(bottom_left.x,top_right.x):
 			for y in range(top_right.y,bottom_left.y):
 				var query_pos = pos + Vector2i(x,y)
-				if tileBuildings.has(query_pos):
-					tileBuildings[query_pos] = building_inst
+				if tile_buildings.has(query_pos):
+					tile_buildings[query_pos] = building_inst
 	return true
+	
+func set_new_size(new_width : int, new_height : int):
+	clear()
+	for building in tile_buildings.values():
+		if building != null:
+			building.queue_free()
+	tile_buildings.clear()
+	width = new_width
+	height = new_height
+	for x in width:
+		for y in height:
+			set_cell(Vector2i (x - width/2,y - height/2),0 ,Vector2i (x%2,y%2))
+			tile_buildings[Vector2i (x - width/2,y - height/2)] = null
