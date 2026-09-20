@@ -1,9 +1,13 @@
 class_name SaveFileManager extends FileDialog
 
 @export var tile_map : GameTileMap
+@export var camera_movement : CameraMovement
 
 func _ready() -> void:
 	file_selected.connect(FileSelected)
+
+func _process(delta: float) -> void:
+	camera_movement.paused = visible
 
 func FileSelected(file_name):
 	var save = file_mode == 4

@@ -1,0 +1,98 @@
+[gd_scene format=4 uid="uid://b1so0kn37xihd"]
+
+[ext_resource type="Script" uid="uid://bktorurh54hs" path="res://Game/Buildings/Walls/wall.gd" id="1_rqtnn"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_vvrbf"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAACcAAAAUklGRpQAAABXRUJQVlA4TIgAAAAvP8APEBcgEEhxIoMsEEhxOostFkzx7mya/4B/BawiSXEFNlBzJtYEul7EJlwO3xH9V+S2baPcdqtnkMcllEc/CeBK3qwxjyo6HThN+bqHur9BXOL5MYzxDs8XXf1ZnnU89ZYh3oc7H9sw0DtC3hjBl/3q+eDR/vHUW/q9564mHbikj4N6H5on")
+size_override = Vector2(64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rqtnn"]
+radius = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lckf1"]
+bg_color = Color(0.31431612, 0.31431612, 0.31431603, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.14294383, 0.14294383, 0.14294383, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilcj4"]
+bg_color = Color(1, 0, 0.011764706, 1)
+border_color = Color(0.17588499, 0.17588499, 0.17588499, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Wall" type="Node2D" unique_id=1063895929 node_paths=PackedStringArray("wall_frames", "_health_bar", "_hitbox", "_base")]
+script = ExtResource("1_rqtnn")
+wall_frames = NodePath("Sprite2D")
+_top_right = Vector2i(1, 0)
+_bottom_left = Vector2i(0, 1)
+_max_health = 150
+_health_bar = NodePath("HealthBar")
+_hitbox = NodePath("StaticBody2D")
+_base = NodePath("Sprite2D")
+_shop_category = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=889911874]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_vvrbf")
+hframes = 4
+vframes = 4
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"output_section": false,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://Game/Buildings/Walls/wall.aseprite",
+"source_uid": 7865701282453278148
+}
+metadata/_aseprite_wizard_source_file_hash_ = "71100f9f5df5ea979c0dcea22abfb6c2"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1451550393]
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=721709189]
+shape = SubResource("CircleShape2D_rqtnn")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=197032930]
+visible = false
+z_index = 1
+anchors_preset = -1
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_lckf1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ilcj4")
+value = 100.0
+show_percentage = false

@@ -1,12 +1,14 @@
-extends Camera2D
+class_name CameraMovement extends Camera2D
 
 var move_speed = 400 
 var zoom_speed = 10 
 
+var paused : bool = false
+
 @export var tile_map : GameTileMap
 
-func _unhandled_input(event: InputEvent):
-	var delta = get_process_delta_time()
+func _process(delta: float) -> void:
+	if paused: return
 	var current_zoom = zoom.x
 	var current_position = global_position
 	if Input.is_action_pressed("Camera Up"):

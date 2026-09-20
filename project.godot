@@ -24,6 +24,12 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://Campaign/": "purple"
+}
+
 [gui]
 
 theme/custom="uid://bivjhjcnfix4h"

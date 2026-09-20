@@ -1,0 +1,91 @@
+[gd_scene format=4 uid="uid://dp03j3laxnyxq"]
+
+[ext_resource type="Script" uid="uid://bird6kt318wqn" path="res://Game/Buildings/Gems/gem.gd" id="1_hcfmq"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_i2ylj"]
+_data = PackedByteArray("AAADAAUAAAABAAAAMAAAADAAAAD8AAAAUklGRvQAAABXRUJQVlA4TOcAAAAvL8ALECdAkG0zjhkM4f5g1yDItpnSJOZxf4gTZNsMaQJTuL/N5z8A/1d0NsFBJLt1oymDTAnkUwKNhSASf061n55eGUT0n4Hbto3UuyNur18YG/vLxPF8WNxwkTvzEg3XuD08LskRPn5Ihk8UZ4teLK5ebNJZmnTWlYbb2Upc3LoCcEsAtYawq7DGKOwxuiYorYDSKnCVxBGeODyuZR3v7xiEJ8nYtiTjo6evyIfoF5K/p/795f/1x/+1QrB8ycCqDKzIgYoMsrKk1BWQgytgBwS2rJYKqAKoEL5UyJxqiJo9HzMRqgEA")
+size_override = Vector2(48, 48)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7u2dt"]
+radius = 18.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hcfmq"]
+bg_color = Color(0.31431612, 0.31431612, 0.31431603, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.14294383, 0.14294383, 0.14294383, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jp10m"]
+bg_color = Color(1, 0, 0.011764706, 1)
+border_color = Color(0.17588499, 0.17588499, 0.17588499, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="LargeGem" type="Node2D" unique_id=333176441 node_paths=PackedStringArray("_health_bar", "_hitbox", "_base")]
+script = ExtResource("1_hcfmq")
+_top_right = Vector2i(2, -1)
+_bottom_left = Vector2i(-1, 2)
+_max_health = 250
+_health_bar = NodePath("HealthBar")
+_hitbox = NodePath("StaticBody2D")
+_base = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1219282267]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_i2ylj")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://Game/Buildings/Gems/LargeGem.aseprite",
+"source_uid": 6438018343833041370
+}
+metadata/_aseprite_wizard_source_file_hash_ = "63b4feec8395ba64019354f8e70de7b6"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=581900683]
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1478390601]
+shape = SubResource("CircleShape2D_7u2dt")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=48452463]
+visible = false
+z_index = 1
+anchors_preset = -1
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_hcfmq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jp10m")
+value = 100.0
+show_percentage = false

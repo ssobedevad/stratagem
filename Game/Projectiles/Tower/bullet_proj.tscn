@@ -1,0 +1,39 @@
+[gd_scene format=4 uid="uid://cjr1ar3gelsq2"]
+
+[ext_resource type="Script" uid="uid://bhifoter4bg1x" path="res://Game/Projectiles/targetted_projectile.gd" id="1_f81y2"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_un3or"]
+_data = PackedByteArray("AAADAAUAAAABAAAABAAAAAQAAAA4AAAAUklGRjAAAABXRUJQVlA4TCMAAAAvA8AAEBcgEEhxKFMsEEhxLEssEEhxJFM8/wH1D06RFtH/MAA=")
+size_override = Vector2(4, 4)
+
+[node name="BulletProj" type="Node2D" unique_id=1029551039]
+script = ExtResource("1_f81y2")
+_move_speed = 200.0
+_hit_radius = 2.0
+_damage = 12
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2118628776]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_un3or")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://Game/Projectiles/Tower/Bullet.aseprite",
+"source_uid": 5728713757635409860
+}
+metadata/_aseprite_wizard_source_file_hash_ = "308ac39f968bcc911d1467b5cb1dc37f"

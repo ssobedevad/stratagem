@@ -7,22 +7,18 @@
 @export var _health_bar : ProgressBar
 @export var _hitbox : CollisionObject2D
 @export var _base : Sprite2D
-@export var _name : String
-@export var _cost : int
-@export var _description : String
+@export var _shop_category : SHOP_CATEGORY
 
 var tile_pos : Vector2i
-
 var placed : bool = false
 
-func get_building_id() -> int:
-	return -1
+@abstract func get_building_name() -> String
+@abstract func get_description() -> String
+@abstract func get_cost() -> int
+@abstract func get_building_id() -> int
 
 func get_base_texture():
 	return _base.texture
-
-func on_place():
-	pass
 
 func get_pivot() -> Vector2:
 	return _pivot	
@@ -39,14 +35,28 @@ func get_bottom_left() -> Vector2i:
 func _process(delta):
 	if _maximum_health > 0:
 		_health_bar.value = float (_health)/ float (_maximum_health) * 100.0
+		_health_bar.set_visible(_health < _maximum_health)
 	else:
 		_health_bar.value = 0
+		
 func _on_place():
 	_hitbox.input_event.connect(_clicked)
 	init_health(_max_health)
 	placed = true
 
+func _on_free():
+	pass
+	
+func _pre_move():
+	pass
+	
+func _post_move():
+	pass
+
 @abstract func _clicked(viewport: Viewport, event: InputEvent, shape_idx: int)
 	
 func kill():
-	pass
+	_on_free()
+	queue_free()
+
+enum SHOP_CATEGORY {GEMS,BUILDINGS,TOWERS,TRAPS}

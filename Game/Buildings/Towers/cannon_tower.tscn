@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://cu6l6itcsy4f7"]
 
 [ext_resource type="Script" uid="uid://gbuljdouom2c" path="res://Game/Buildings/Towers/cannon_tower.gd" id="1_cdodi"]
+[ext_resource type="PackedScene" uid="uid://cjr1ar3gelsq2" path="res://Game/Projectiles/Tower/bullet_proj.tscn" id="2_rumum"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_u8mh2"]
 _data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAACyAAAAUklGRqoAAABXRUJQVlA4TJ4AAAAvH8AHECdAkG2bG8QARnGBK2QjCc4twjIswndHmG2cG8ZeoziNm/8ASLuP1H1gEMlWG1IMUARUBWCg+hcV3iPNQET/GbhtpCgLWTzoM8RPpYxxLvFNyugX2DzJO5OwC+yApJ2N+EAmLpG9kbJ6UgKvpmgURjIklAHhFLksP3B/5PZB9znc53Sf44OcUQAYBUyT8iTvjMBOrEqZkfxTBA==")
@@ -11,6 +12,7 @@ _data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAAB4AAAAUklGRnAAAABXRUJQVlA4TGQ
 size_override = Vector2(32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dwfjq"]
+radius = 13.0
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_rumum"]
 _data = PackedByteArray("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")
@@ -40,11 +42,14 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[node name="cannon_tower" type="Node2D" unique_id=309943870 node_paths=PackedStringArray("_gun", "_range_indicator", "_health_bar", "_hitbox", "_base")]
+[node name="cannon_tower" type="Node2D" unique_id=309943870 node_paths=PackedStringArray("fire_pos", "_gun", "_range_indicator", "_health_bar", "_hitbox", "_base")]
 script = ExtResource("1_cdodi")
+bullet_obj = ExtResource("2_rumum")
+fire_pos = NodePath("Base/Gun/Marker2D")
 _gun = NodePath("Base/Gun")
 _range_indicator = NodePath("Base/RangeIndicator")
 _range = 2.5
+_attack_speed = 0.35
 _top_right = Vector2i(2, -1)
 _bottom_left = Vector2i(0, 1)
 _pivot = Vector2(8, -8)
@@ -52,9 +57,7 @@ _max_health = 125
 _health_bar = NodePath("HealthBar")
 _hitbox = NodePath("Base/StaticBody2D")
 _base = NodePath("Base")
-_name = "Cannon Tower"
-_cost = 100
-_description = "Shoots high damage single target at a moderate rate with medium range"
+_shop_category = 2
 
 [node name="Base" type="Sprite2D" parent="." unique_id=141305784]
 texture_filter = 1
@@ -116,6 +119,9 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "e84cb8c58b5afba5f5da76f65eeaf2b2"
 
+[node name="Marker2D" type="Marker2D" parent="Base/Gun" unique_id=32229068]
+position = Vector2(0, -16)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="Base" unique_id=1888720231]
 input_pickable = true
 
@@ -154,6 +160,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "ff7c410bf0263ba425592dd08633c6db"
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=240212525]
 visible = false
+z_index = 1
 anchors_preset = -1
 offset_left = -20.0
 offset_top = -20.0

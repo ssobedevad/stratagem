@@ -1,8 +1,30 @@
 [gd_resource type="Theme" format=3 uid="uid://bivjhjcnfix4h"]
 
 [ext_resource type="StyleBox" uid="uid://cpaw4imvk8o36" path="res://UI/Theme/ui_panel_back.tres" id="1_v5i81"]
-[ext_resource type="StyleBox" uid="uid://b060ioubluhyj" path="res://UI/Theme/ui_panel_back_hover.tres" id="2_jvgch"]
-[ext_resource type="StyleBox" uid="uid://bi6uv24a68pva" path="res://UI/Theme/ui_panel_back_pressed.tres" id="3_mep6e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6n665"]
+bg_color = Color(0.42745098, 0.38431373, 0.98039216, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.98039216, 0.43137255, 0.78431374, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_br3p6"]
+bg_color = Color(0.3372549, 0.18431373, 0.93333334, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.98039216, 0.43137255, 0.78431374, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [resource]
 Button/colors/font_color = Color(0.97903866, 0.43226472, 0.7841266, 1)
@@ -12,7 +34,7 @@ Button/colors/font_hover_pressed_color = Color(0.98039216, 0.43137255, 0.7843137
 Button/colors/font_pressed_color = Color(0.98039216, 0.43137255, 0.78431374, 1)
 Button/constants/outline_size = 10
 Button/styles/disabled = ExtResource("1_v5i81")
-Button/styles/focus = ExtResource("1_v5i81")
-Button/styles/hover = ExtResource("2_jvgch")
+Button/styles/focus = SubResource("StyleBoxFlat_6n665")
+Button/styles/hover = SubResource("StyleBoxFlat_6n665")
 Button/styles/normal = ExtResource("1_v5i81")
-Button/styles/pressed = ExtResource("3_mep6e")
+Button/styles/pressed = SubResource("StyleBoxFlat_br3p6")

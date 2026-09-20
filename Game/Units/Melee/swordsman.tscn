@@ -1,0 +1,95 @@
+[gd_scene format=4 uid="uid://bubd8pdvfb6yd"]
+
+[ext_resource type="Script" uid="uid://btvsbyitwf313" path="res://Game/Units/Melee/swordsman.gd" id="1_4aaym"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_g27e6"]
+_data = PackedByteArray("AAADAAUAAAABAAAAEAAAABAAAACaAAAAUklGRpIAAABXRUJQVlA4TIYAAAAvD8ADEDegpm0kNnc02pfxtycTwfgWdiEk0L+Msyto24YplTJ4gzH+HAZi0vwHgPVkX42Qc18vgYNIthppvoO/SUAyAFMYOAsbHOBfBCciov8TAEwT46QTkKoBRb03UrW3GO7PKGpvLsV6fw5Hb3/OT13S36FGntdZNdirukCqBjDpxDhNAA==")
+size_override = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4aaym"]
+radius = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4aaym"]
+bg_color = Color(0.31431612, 0.31431612, 0.31431603, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.14294383, 0.14294383, 0.14294383, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vc0ve"]
+bg_color = Color(1, 0, 0.011764706, 1)
+border_color = Color(0.17588499, 0.17588499, 0.17588499, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Swordsman" type="RigidBody2D" unique_id=673799837 node_paths=PackedStringArray("_hitbox", "_navigator", "_health_bar")]
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_4aaym")
+_max_health = 35
+_range = 0.2
+_move_speed = 2.0
+_attack_speed = 1.0
+_attack_damage = 8
+_hitbox = NodePath(".")
+_navigator = NodePath("NavigationAgent2D")
+_health_bar = NodePath("UnitHealthBar")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=33118755]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_g27e6")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://Game/Units/Melee/swordsman.aseprite",
+"source_uid": 7379346509375168889
+}
+metadata/_aseprite_wizard_source_file_hash_ = "31ac40f64860234622a4e1db2f6bbe0e"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1110167565]
+shape = SubResource("CircleShape2D_4aaym")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1572436257]
+debug_enabled = true
+
+[node name="UnitHealthBar" type="ProgressBar" parent="." unique_id=1126787452]
+visible = false
+z_index = 1
+anchors_preset = -1
+offset_left = -10.0
+offset_top = -12.0
+offset_right = 10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_4aaym")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vc0ve")
+value = 100.0
+show_percentage = false
