@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://brd6drgdfvca4"]
+
+[ext_resource type="Script" uid="uid://oa3u87rnj6dr" path="res://building_database.gd" id="1_bphty"]
+[ext_resource type="Script" uid="uid://dcnylwn1cjds7" path="res://autoload_global_data.gd" id="1_gf8d3"]
+[ext_resource type="PackedScene" uid="uid://dp03j3laxnyxq" path="res://Game/Buildings/Gems/large_gem.tscn" id="2_bgs5k"]
+[ext_resource type="PackedScene" uid="uid://b1so0kn37xihd" path="res://Game/Buildings/Walls/wall.tscn" id="3_gf8d3"]
+[ext_resource type="PackedScene" uid="uid://cu6l6itcsy4f7" path="res://Game/Buildings/Towers/cannon_tower.tscn" id="4_f2na2"]
+
+[node name="Autoload" type="Node2D" unique_id=1017996096]
+script = ExtResource("1_gf8d3")
+
+[node name="BuildingDatabase" type="Node2D" parent="." unique_id=1942480018]
+script = ExtResource("1_bphty")
+gem_objects = Array[PackedScene]([ExtResource("2_bgs5k")])
+building_objects = Array[PackedScene]([ExtResource("3_gf8d3")])
+tower_objects = Array[PackedScene]([ExtResource("4_f2na2")])

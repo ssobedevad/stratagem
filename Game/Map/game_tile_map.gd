@@ -3,10 +3,10 @@ class_name GameTileMap extends TileMapLayer
 @export var width : int = 5
 @export var height : int = 5
 
-@export var gem_objects : Array[PackedScene]
-@export var building_objects : Array[PackedScene]
-@export var tower_objects : Array[PackedScene]
-@export var trap_objects : Array[PackedScene]
+var gem_objects : Array[PackedScene]
+var building_objects : Array[PackedScene]
+var tower_objects : Array[PackedScene]
+var trap_objects : Array[PackedScene]
 
 
 func get_all_objects() -> Array[PackedScene]:
@@ -42,6 +42,13 @@ var all_targettable	: Array[Health]
 func _ready() -> void:
 	clear_board()
 	set_new_size(width,height)
+	var bdb : BuildingDatabase = Autoload.get_node("./BuildingDatabase")
+	gem_objects = bdb.gem_objects
+	building_objects = bdb.building_objects
+	tower_objects = bdb.tower_objects
+	trap_objects = bdb.trap_objects
+	if (Autoload as AutoloadGlobalData).loading_map_data_path.length() > 0:
+		load_map((Autoload as AutoloadGlobalData).loading_map_data_path)
 	
 func clear_board():
 	clear()
@@ -51,18 +58,34 @@ func clear_board():
 	tile_buildings.clear()
 			
 func set_new_size(new_width : int, new_height : int):
-	if new_width < width or new_height < height:
+	if new_width < width:
+		print("BOARD SHRINK WIDTH: " + str(range(new_width,width)))
 		clear()
+		for x in range(new_width,width):
+			for y in range(0,height):
+				if tile_buildings[Vector2i (x,y)] != null:
+					tile_buildings[Vector2i (x,y)].kill()
+				tile_buildings.erase(Vector2i (x,y))	
+				print("REMOVE TILE " + str(Vector2i (x,y)))
+	if new_height < height:
+		print("BOARD SHRINK HEIGHT: " + str(range(new_height,height)))
+		clear()
+		for x in range(0,width):
+			for y in range(new_height,height):
+				if tile_buildings[Vector2i (x,y)] != null:
+					tile_buildings[Vector2i (x,y)].kill()
+				tile_buildings.erase(Vector2i (x,y))	
+				print("REMOVE TILE " + str(Vector2i (x,y)))
 	width = new_width
 	height = new_height
 	for x in range(-2,width + 2):
 		for y in range(-2,height + 2):
 			if x < 0 or y < 0 or x >= width or y >= height:
-				set_cell(Vector2i (x - width/2,y - height/2),0 ,Vector2i (2,0))
+				set_cell(Vector2i (x,y),0 ,Vector2i (2,0))
 			else:
-				set_cell(Vector2i (x - width/2,y - height/2),0 ,Vector2i (x%2,y%2))
-				if !tile_buildings.has(Vector2i (x - width/2,y - height/2)):
-					tile_buildings[Vector2i (x - width/2,y - height/2)] = null
+				set_cell(Vector2i (x,y),0 ,Vector2i (x%2,y%2))
+				if !tile_buildings.has(Vector2i (x,y)):
+					tile_buildings[Vector2i (x,y)] = null
 
 func can_place_building(building: Building, pos: Vector2i) -> bool:
 	if not building is Building:

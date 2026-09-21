@@ -15,6 +15,10 @@ run/main_scene="uid://cf5tmkqkwsqro"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Autoload="*uid://brd6drgdfvca4"
+
 [display]
 
 window/stretch/mode="canvas_items"
@@ -88,6 +92,7 @@ aseprite_wizard.plugin.static-texture-split={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
 environment/defaults/default_clear_color=Color(0.3019608, 0.4, 0.3019608, 1)

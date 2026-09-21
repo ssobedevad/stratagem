@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://bcfhvtlb8ql3n"]
+
+[ext_resource type="Script" uid="uid://cqihycxx2mnof" path="res://Game/Map/camera_movement.gd" id="1_60250"]
+[ext_resource type="TileSet" uid="uid://dr8pgmd3hr0cg" path="res://Game/Map/map_tileset.tres" id="2_1sios"]
+[ext_resource type="Script" uid="uid://b3vl5rnmss6s3" path="res://Game/Map/game_tile_map.gd" id="3_hmdl1"]
+[ext_resource type="Texture2D" uid="uid://tbnxea15x04a" path="res://Game/Buildings/Gems/SmallGem.png" id="4_tfscm"]
+[ext_resource type="Texture2D" uid="uid://b3w8n2756o1j" path="res://Game/Units/Melee/swordsman.png" id="4_y66t7"]
+[ext_resource type="Texture2D" uid="uid://df72ujbr3g7a0" path="res://UI/Game/PlayMode/Toolbar/Cross.png" id="5_hmdl1"]
+
+[node name="Root" type="Node2D" unique_id=1918227097]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=871307937 node_paths=PackedStringArray("tile_map")]
+position = Vector2(576, 324)
+script = ExtResource("1_60250")
+tile_map = NodePath("../Ground/Map")
+
+[node name="Ground" type="Node2D" parent="." unique_id=1283591024]
+position = Vector2(576, 324)
+
+[node name="Map" type="TileMapLayer" parent="Ground" unique_id=1451307381 node_paths=PackedStringArray("buildings_node", "units_node")]
+tile_set = ExtResource("2_1sios")
+script = ExtResource("3_hmdl1")
+buildings_node = NodePath("../Buildings")
+units_node = NodePath("../Units")
+metadata/_custom_type_script = "uid://b3vl5rnmss6s3"
+
+[node name="Buildings" type="Node2D" parent="Ground" unique_id=2051084856]
+
+[node name="Units" type="Node2D" parent="Ground" unique_id=1549120868]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=693721521]
+
+[node name="PlayModeUI" type="Control" parent="CanvasLayer" unique_id=1713997862]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Toolbar" type="Panel" parent="CanvasLayer/PlayModeUI" unique_id=1441901642]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 48.0
+grow_horizontal = 2
+
+[node name="LevelName" type="Label" parent="CanvasLayer/PlayModeUI/Toolbar" unique_id=1704775424]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 112.0
+offset_bottom = 39.0
+text = "TAG-NUM_T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelResource" type="Label" parent="CanvasLayer/PlayModeUI/Toolbar" unique_id=1785952346]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 8.0
+offset_right = 376.0
+offset_bottom = 39.0
+text = "RESOURCE/RESOURCE MAX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelPercentage" type="Label" parent="CanvasLayer/PlayModeUI/Toolbar" unique_id=271126618]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 8.0
+offset_right = 456.0
+offset_bottom = 39.0
+text = "TU%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Gem" type="TextureRect" parent="CanvasLayer/PlayModeUI/Toolbar" unique_id=2028828680]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 8.0
+offset_right = 528.0
+offset_bottom = 40.0
+texture = ExtResource("4_tfscm")
+
+[node name="Destroyed" type="TextureRect" parent="CanvasLayer/PlayModeUI/Toolbar/Gem" unique_id=956617859]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_hmdl1")
+
+[node name="UnitList" type="ScrollContainer" parent="CanvasLayer/PlayModeUI" unique_id=1562642168]
+layout_mode = 0
+offset_top = 48.0
+offset_right = 120.0
+offset_bottom = 648.0
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer/PlayModeUI/UnitList" unique_id=100895815]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 10
+allow_search = false
+item_count = 5
+fixed_icon_size = Vector2i(32, 32)
+item_0/text = "Swordsman"
+item_0/icon = ExtResource("4_y66t7")
+item_1/text = "Swordsman"
+item_1/icon = ExtResource("4_y66t7")
+item_2/text = "Swordsman"
+item_2/icon = ExtResource("4_y66t7")
+item_3/text = "Swordsman"
+item_3/icon = ExtResource("4_y66t7")
+item_4/text = "Swordsman"
+item_4/icon = ExtResource("4_y66t7")
