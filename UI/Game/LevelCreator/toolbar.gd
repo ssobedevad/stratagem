@@ -23,6 +23,7 @@ func _ready():
 	choose_mode.add_item("DELETE",2)
 
 func play_game_clicked():
+	(Autoload as AutoloadGlobalData).loading_map_data =	tile_map_builder.get_save_game_buffers()
 	get_tree().change_scene_to_file("res://Scenes/play_mode.tscn")
 
 func choose_mode_changed(new_mode : int):

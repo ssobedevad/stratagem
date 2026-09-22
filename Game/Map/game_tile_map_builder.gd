@@ -1,6 +1,6 @@
 class_name GameTileMapBuilder extends GameTileMap
 
-@export var building_index : int = -1
+var building_index : int = -1
 
 var current_mode : BUILDER_MODE
 

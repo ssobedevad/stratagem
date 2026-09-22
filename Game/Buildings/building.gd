@@ -56,6 +56,12 @@ func _post_move():
 @abstract func _clicked(viewport: Viewport, event: InputEvent, shape_idx: int)
 	
 func kill():
+	var top_right = get_top_right()
+	var bottom_left = get_bottom_left()
+	for x in range(bottom_left.x,top_right.x):
+		for y in range(top_right.y,bottom_left.y):
+			var query_pos = tile_pos + Vector2i(x,y)
+			tile_map.tile_buildings[query_pos] = null
 	_on_free()
 	queue_free()
 

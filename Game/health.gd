@@ -28,6 +28,10 @@ func on_kill():
 
 func kill():
 	pass
+	
+func _get_tile_pos() -> Vector2i:
+	var local_pos = global_position - tile_map.global_position
+	return tile_map.local_to_map(local_pos)
 
 func can_target(possible : Health) -> bool:
 	return true

@@ -8,6 +8,7 @@ var building_objects : Array[PackedScene]
 var tower_objects : Array[PackedScene]
 var trap_objects : Array[PackedScene]
 
+var unit_objects : Array[PackedScene]
 
 func get_all_objects() -> Array[PackedScene]:
 	var all_objects : Array[PackedScene]
@@ -47,8 +48,10 @@ func _ready() -> void:
 	building_objects = bdb.building_objects
 	tower_objects = bdb.tower_objects
 	trap_objects = bdb.trap_objects
-	if (Autoload as AutoloadGlobalData).loading_map_data_path.length() > 0:
-		load_map((Autoload as AutoloadGlobalData).loading_map_data_path)
+	var udb : UnitDatabase = Autoload.get_node("./UnitDatabase")
+	unit_objects = udb.unit_objects
+	if (Autoload as AutoloadGlobalData).loading_map_data.size() == 2:
+		load_map_from_buffers((Autoload as AutoloadGlobalData).loading_map_data)
 	
 func clear_board():
 	clear()
@@ -193,6 +196,13 @@ func read_keys(keys : PackedByteArray) -> Array[Vector2i]:
 	return keys_content
 func save_map(file_path):
 	var file = FileAccess.open(file_path, FileAccess.WRITE)
+	var datas = get_save_game_buffers()
+	file.store_16(datas[0].size()) #Keys
+	file.store_buffer(datas[0])
+	file.store_16(datas[1].size()) #Buffer
+	file.store_buffer(datas[1])
+
+func get_save_game_buffers() -> Array[PackedByteArray]:
 	var buffer : PackedByteArray
 	var keys : PackedByteArray
 	buffer.resize(65535)
@@ -205,21 +215,24 @@ func save_map(file_path):
 		addr = write_building_5b(building,buffer,keys,addr)
 	buffer.resize(addr.x)
 	keys.resize(addr.y) 
-	file.store_16(addr.y) #keys_size
-	file.store_buffer(keys)
-	file.store_16(addr.x) #buffer_size
-	file.store_buffer(buffer)
+	return [keys,buffer]
+
 func load_map(file_path):
 	var file = FileAccess.open(file_path, FileAccess.READ)
 	var key_size = file.get_16()
 	var keys = file.get_buffer(key_size)
 	var buffer_size = file.get_16()
 	var buffer = file.get_buffer(buffer_size)
+	load_map_from_buffers([keys,buffer])
+enum SAVE_DATA_KEY {MAP_DATA_2b,BUILDING_5b}
+
+func load_map_from_buffers(save_game_buffers : Array[PackedByteArray]):
+	var keys = save_game_buffers[0]
+	var buffer = save_game_buffers[1]
 	var file_content = read_keys(keys)
 	for key in file_content:
 		if key.x == SAVE_DATA_KEY.MAP_DATA_2b:
 			read_map_data_2b(buffer,key.y)
 		if key.x == SAVE_DATA_KEY.BUILDING_5b:
 			read_building_5b(buffer,key.y)	
-enum SAVE_DATA_KEY {MAP_DATA_2b,BUILDING_5b}
 #endregion

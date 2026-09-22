@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dp03j3laxnyxq" path="res://Game/Buildings/Gems/large_gem.tscn" id="2_bgs5k"]
 [ext_resource type="PackedScene" uid="uid://b1so0kn37xihd" path="res://Game/Buildings/Walls/wall.tscn" id="3_gf8d3"]
 [ext_resource type="PackedScene" uid="uid://cu6l6itcsy4f7" path="res://Game/Buildings/Towers/cannon_tower.tscn" id="4_f2na2"]
+[ext_resource type="Script" uid="uid://wrh2rlmarl5w" path="res://unit_database.gd" id="6_f2na2"]
+[ext_resource type="PackedScene" uid="uid://bubd8pdvfb6yd" path="res://Game/Units/Melee/swordsman.tscn" id="7_scw74"]
 
 [node name="Autoload" type="Node2D" unique_id=1017996096]
 script = ExtResource("1_gf8d3")
@@ -14,3 +16,7 @@ script = ExtResource("1_bphty")
 gem_objects = Array[PackedScene]([ExtResource("2_bgs5k")])
 building_objects = Array[PackedScene]([ExtResource("3_gf8d3")])
 tower_objects = Array[PackedScene]([ExtResource("4_f2na2")])
+
+[node name="UnitDatabase" type="Node2D" parent="." unique_id=643857028]
+script = ExtResource("6_f2na2")
+unit_objects = Array[PackedScene]([ExtResource("7_scw74")])

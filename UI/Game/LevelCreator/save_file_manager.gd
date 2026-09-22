@@ -15,8 +15,6 @@ func FileSelected(file_name):
 		tile_map.save_map(file_name)
 	else:
 		tile_map.load_map(file_name)
-	
-	(Autoload as AutoloadGlobalData).loading_map_data_path = file_name
 
 func RequestOpenGameLevelMapFile():
 	if visible: return

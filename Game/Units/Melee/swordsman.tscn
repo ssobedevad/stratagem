@@ -46,7 +46,7 @@ _hitbox = NodePath(".")
 _navigator = NodePath("NavigationAgent2D")
 _health_bar = NodePath("UnitHealthBar")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=33118755]
+[node name="Icon" type="Sprite2D" parent="." unique_id=33118755]
 texture_filter = 1
 texture = SubResource("PortableCompressedTexture2D_g27e6")
 metadata/_aseprite_wizard_interface_config_ = {

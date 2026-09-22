@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cqihycxx2mnof" path="res://Game/Map/camera_movement.gd" id="1_60250"]
 [ext_resource type="TileSet" uid="uid://dr8pgmd3hr0cg" path="res://Game/Map/map_tileset.tres" id="2_1sios"]
-[ext_resource type="Script" uid="uid://b3vl5rnmss6s3" path="res://Game/Map/game_tile_map.gd" id="3_hmdl1"]
 [ext_resource type="Texture2D" uid="uid://tbnxea15x04a" path="res://Game/Buildings/Gems/SmallGem.png" id="4_tfscm"]
-[ext_resource type="Texture2D" uid="uid://b3w8n2756o1j" path="res://Game/Units/Melee/swordsman.png" id="4_y66t7"]
 [ext_resource type="Texture2D" uid="uid://df72ujbr3g7a0" path="res://UI/Game/PlayMode/Toolbar/Cross.png" id="5_hmdl1"]
+[ext_resource type="Script" uid="uid://bher5i0q6v545" path="res://UI/Game/PlayMode/UnitList/unit_list.gd" id="6_hmdl1"]
+[ext_resource type="Script" uid="uid://b3vr7ax2ci17i" path="res://Game/Map/game_tile_map_play.gd" id="6_tfscm"]
 
 [node name="Root" type="Node2D" unique_id=1918227097]
 
@@ -19,7 +19,7 @@ position = Vector2(576, 324)
 
 [node name="Map" type="TileMapLayer" parent="Ground" unique_id=1451307381 node_paths=PackedStringArray("buildings_node", "units_node")]
 tile_set = ExtResource("2_1sios")
-script = ExtResource("3_hmdl1")
+script = ExtResource("6_tfscm")
 buildings_node = NodePath("../Buildings")
 units_node = NodePath("../Units")
 metadata/_custom_type_script = "uid://b3vl5rnmss6s3"
@@ -90,11 +90,14 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_hmdl1")
 
-[node name="UnitList" type="ScrollContainer" parent="CanvasLayer/PlayModeUI" unique_id=1562642168]
+[node name="UnitList" type="ScrollContainer" parent="CanvasLayer/PlayModeUI" unique_id=1562642168 node_paths=PackedStringArray("_item_list", "_tile_map")]
 layout_mode = 0
 offset_top = 48.0
 offset_right = 120.0
 offset_bottom = 648.0
+script = ExtResource("6_hmdl1")
+_item_list = NodePath("ItemList")
+_tile_map = NodePath("../../../Ground/Map")
 
 [node name="ItemList" type="ItemList" parent="CanvasLayer/PlayModeUI/UnitList" unique_id=100895815]
 layout_mode = 2
@@ -103,15 +106,4 @@ size_flags_vertical = 3
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 10
 allow_search = false
-item_count = 5
 fixed_icon_size = Vector2i(32, 32)
-item_0/text = "Swordsman"
-item_0/icon = ExtResource("4_y66t7")
-item_1/text = "Swordsman"
-item_1/icon = ExtResource("4_y66t7")
-item_2/text = "Swordsman"
-item_2/icon = ExtResource("4_y66t7")
-item_3/text = "Swordsman"
-item_3/icon = ExtResource("4_y66t7")
-item_4/text = "Swordsman"
-item_4/icon = ExtResource("4_y66t7")

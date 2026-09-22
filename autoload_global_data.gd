@@ -1,3 +1,3 @@
 class_name AutoloadGlobalData extends Node2D
 
-var loading_map_data_path : String = ""
+var loading_map_data : Array[PackedByteArray]
