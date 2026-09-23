@@ -19,6 +19,7 @@ position = Vector2(576, 324)
 
 [node name="Map" type="TileMapLayer" parent="Ground" unique_id=1451307381 node_paths=PackedStringArray("buildings_node", "units_node")]
 tile_set = ExtResource("2_1sios")
+navigation_enabled = false
 script = ExtResource("6_tfscm")
 buildings_node = NodePath("../Buildings")
 units_node = NodePath("../Units")
@@ -35,6 +36,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+mouse_filter = 2
 
 [node name="Toolbar" type="Panel" parent="CanvasLayer/PlayModeUI" unique_id=1441901642]
 layout_mode = 1

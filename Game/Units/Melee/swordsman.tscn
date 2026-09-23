@@ -7,7 +7,7 @@ _data = PackedByteArray("AAADAAUAAAABAAAAEAAAABAAAACaAAAAUklGRpIAAABXRUJQVlA4TIY
 size_override = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4aaym"]
-radius = 8.0
+radius = 0.1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4aaym"]
 bg_color = Color(0.31431612, 0.31431612, 0.31431603, 1)
@@ -33,7 +33,8 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[node name="Swordsman" type="RigidBody2D" unique_id=673799837 node_paths=PackedStringArray("_hitbox", "_navigator", "_health_bar")]
+[node name="Swordsman" type="RigidBody2D" unique_id=673799837 node_paths=PackedStringArray("_hitbox", "_health_bar")]
+input_pickable = true
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_4aaym")
@@ -43,7 +44,6 @@ _move_speed = 2.0
 _attack_speed = 1.0
 _attack_damage = 8
 _hitbox = NodePath(".")
-_navigator = NodePath("NavigationAgent2D")
 _health_bar = NodePath("UnitHealthBar")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=33118755]
@@ -74,9 +74,6 @@ metadata/_aseprite_wizard_source_file_hash_ = "31ac40f64860234622a4e1db2f6bbe0e"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1110167565]
 shape = SubResource("CircleShape2D_4aaym")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1572436257]
-debug_enabled = true
 
 [node name="UnitHealthBar" type="ProgressBar" parent="." unique_id=1126787452]
 visible = false

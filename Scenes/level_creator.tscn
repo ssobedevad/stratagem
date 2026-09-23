@@ -21,6 +21,7 @@ position = Vector2(576, 324)
 
 [node name="Map" type="TileMapLayer" parent="Ground" unique_id=1303562051 node_paths=PackedStringArray("buildings_node", "units_node")]
 tile_set = ExtResource("2_32mmr")
+navigation_enabled = false
 script = ExtResource("3_rqfl5")
 width = 20
 height = 20

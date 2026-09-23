@@ -34,7 +34,7 @@ func has_wall(pos : Vector2i, update : bool):
 	var is_wall =  tile_map.tile_buildings.has(pos) and tile_map.tile_buildings[pos] != null and tile_map.tile_buildings[pos] is Wall
 	if is_wall and update:
 		tile_map.tile_buildings[pos]._update_wall_frame()
-		print("UPDATED BY NEIGHBOUR " + str(pos))
+		#print("UPDATED BY NEIGHBOUR " + str(pos))
 	return is_wall
 
 func _update_wall_frame(update_neighbours : bool = false):
@@ -42,7 +42,7 @@ func _update_wall_frame(update_neighbours : bool = false):
 	var has_below = has_wall(tile_pos + Vector2i(0,1),update_neighbours)
 	var has_left = has_wall(tile_pos + Vector2i(-1,0),update_neighbours)
 	var has_right = has_wall(tile_pos + Vector2i(1,0),update_neighbours)
-	print("WALL AT POS " + str(tile_pos) + " STATUS A: " + str(has_above) + " B: " + str(has_below) + " L: " + str(has_left) + " R: " + str(has_right))
+	#print("WALL AT POS " + str(tile_pos) + " STATUS A: " + str(has_above) + " B: " + str(has_below) + " L: " + str(has_left) + " R: " + str(has_right))
 	if has_above:
 		if has_below:
 			if has_left:

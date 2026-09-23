@@ -11,13 +11,10 @@ func init_health(max_health):
 	_health = max_health
 	tile_map = get_node("/root/Root/Ground/Map")
 	tile_map.all_targettable.append(self)
-	print("FOUND TILEMAP " + str(tile_map))
 		
 func hurt(damage : int):
-	print("TAKES " + str(damage))
 	_health -= damage
 	if _health <= 0:
-		print("TRY KILL")
 		on_kill()
 		
 func on_kill():

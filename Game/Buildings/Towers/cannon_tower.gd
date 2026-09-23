@@ -38,4 +38,3 @@ func _physics_process(delta: float) -> void:
 		if (_attack_timer >= _attack_time):
 			_attack_timer -= _attack_time
 			attack()
-			print("SHOOT")
