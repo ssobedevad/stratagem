@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b7oy2v5w4usmq"
+path="res://.godot/imported/thief.aseprite-746a5e72c9ca0dc66177d4a9fddc6483.res"
+
+[deps]
+
+source_file="res://Game/Units/Melee/thief.aseprite"
+dest_files=["res://.godot/imported/thief.aseprite-746a5e72c9ca0dc66177d4a9fddc6483.res"]
+
+[params]
+

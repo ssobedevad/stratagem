@@ -1,9 +1,9 @@
-[gd_scene format=4 uid="uid://bubd8pdvfb6yd"]
+[gd_scene format=4 uid="uid://be3fv1emoik7s"]
 
-[ext_resource type="Script" uid="uid://btvsbyitwf313" path="res://Game/Units/Melee/swordsman.gd" id="1_4aaym"]
+[ext_resource type="Script" uid="uid://cdw7e76l6c0ew" path="res://Game/Units/Melee/thief.gd" id="1_wnr45"]
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_g27e6"]
-_data = PackedByteArray("AAADAAUAAAABAAAAEAAAABAAAACaAAAAUklGRpIAAABXRUJQVlA4TIYAAAAvD8ADEDegpm0kNnc02pfxtycTwfgWdiEk0L+Msyto24YplTJ4gzH+HAZi0vwHgPVkX42Qc18vgYNIthppvoO/SUAyAFMYOAsbHOBfBCciov8TAEwT46QTkKoBRb03UrW3GO7PKGpvLsV6fw5Hb3/OT13S36FGntdZNdirukCqBjDpxDhNAA==")
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_mp8aa"]
+_data = PackedByteArray("AAADAAUAAAABAAAAEAAAABAAAACiAAAAUklGRpoAAABXRUJQVlA4TI4AAAAvD8ADED9AJmCx/k3U8ToF8IqioG0bpgTKn1O7R2AaiQFQE4AQZBdAYa2EuRrvMP8BIP6e0BuSsuzo2+AmkiRHKm/sEwTuQByAjYpbAC8IKFv/8I95EBH9nwAgk5qawEM1oKvzk4fq0KLMS4uuDqufrvPQ/twXy/Ww6+fhdlHj4Xkv9Lv6gYdqAKlJzQQA")
 size_override = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4aaym"]
@@ -33,22 +33,22 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[node name="Swordsman" type="RigidBody2D" unique_id=673799837 node_paths=PackedStringArray("_hitbox", "_health_bar")]
+[node name="Thief" type="RigidBody2D" unique_id=673799837 node_paths=PackedStringArray("_hitbox", "_health_bar")]
 input_pickable = true
 gravity_scale = 0.0
 lock_rotation = true
-script = ExtResource("1_4aaym")
-_max_health = 35
-_range = 0.2
-_move_speed = 2.0
-_attack_speed = 0.6
-_attack_damage = 8
+script = ExtResource("1_wnr45")
+_max_health = 10
+_range = 0.1
+_move_speed = 4.0
+_attack_speed = 1.2
+_attack_damage = 6
 _hitbox = NodePath(".")
 _health_bar = NodePath("UnitHealthBar")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=33118755]
 texture_filter = 1
-texture = SubResource("PortableCompressedTexture2D_g27e6")
+texture = SubResource("PortableCompressedTexture2D_mp8aa")
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }
@@ -67,10 +67,10 @@ metadata/_aseprite_wizard_config_ = {
 "player": "",
 "scale": "1.0",
 "slice": "",
-"source": "res://Game/Units/Melee/swordsman.aseprite",
-"source_uid": 7379346509375168889
+"source": "res://Game/Units/Melee/thief.aseprite",
+"source_uid": 4662871543302427424
 }
-metadata/_aseprite_wizard_source_file_hash_ = "31ac40f64860234622a4e1db2f6bbe0e"
+metadata/_aseprite_wizard_source_file_hash_ = "e921de21cc2642dfb517b2878e777349"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1110167565]
 shape = SubResource("CircleShape2D_4aaym")

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bvvwwc3yh5cup"
+path="res://.godot/imported/archer.aseprite-0d0ab4cdc8c8f446c9c5a672539f7f65.res"
+
+[deps]
+
+source_file="res://Game/Units/Ranged/archer.aseprite"
+dest_files=["res://.godot/imported/archer.aseprite-0d0ab4cdc8c8f446c9c5a672539f7f65.res"]
+
+[params]
+

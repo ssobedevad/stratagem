@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ctef4xu2edf1q"
+path="res://.godot/imported/archer_turret.aseprite-2d74f6d034a508056b94dd7f183e7f27.res"
+
+[deps]
+
+source_file="res://Game/Buildings/Towers/archer_turret.aseprite"
+dest_files=["res://.godot/imported/archer_turret.aseprite-2d74f6d034a508056b94dd7f183e7f27.res"]
+
+[params]
+

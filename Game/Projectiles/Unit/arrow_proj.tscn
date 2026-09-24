@@ -1,0 +1,41 @@
+[gd_scene format=4 uid="uid://1yt8dxfwps3n"]
+
+[ext_resource type="Script" uid="uid://bhifoter4bg1x" path="res://Game/Projectiles/targetted_projectile.gd" id="1_aajmx"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_rba7v"]
+_data = PackedByteArray("AAADAAUAAAABAAAACAAAAAgAAABMAAAAUklGRkQAAABXRUJQVlA4TDcAAAAvB8ABEB8gEEjxELEtECB8iPanRiBApoxoEGD+I3B3KChqIwUalNwOQABSeSI5ov/B8RSyKEMDAA==")
+size_override = Vector2(8, 8)
+
+[node name="ArrowProj" type="Node2D" unique_id=1029551039]
+script = ExtResource("1_aajmx")
+_move_speed = 200.0
+_hit_radius = 2.0
+_rotate_to_direction = true
+_rotation_offset = 1.5699999999999998
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2118628776]
+texture_filter = 1
+rotation = -0.7853982
+texture = SubResource("PortableCompressedTexture2D_rba7v")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://Game/Projectiles/Unit/arrow.aseprite",
+"source_uid": 4570637984626745217
+}
+metadata/_aseprite_wizard_source_file_hash_ = "ba63b3e0fc8208befdea75e3dce0f315"

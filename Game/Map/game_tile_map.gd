@@ -84,7 +84,7 @@ func set_new_size(new_width : int, new_height : int):
 	for x in range(-2,width + 2):
 		for y in range(-2,height + 2):
 			if x < 0 or y < 0 or x >= width or y >= height:
-				set_cell(Vector2i (x,y),0 ,Vector2i (2,0))
+				set_cell(Vector2i (x,y),0 ,Vector2i (4,0))
 			else:
 				set_cell(Vector2i (x,y),0 ,Vector2i (x%2,y%2))
 				if !tile_buildings.has(Vector2i (x,y)):
@@ -160,7 +160,6 @@ func read_map_data_2b(buffer : PackedByteArray, addr : int) -> void:
 	height = buffer.decode_u8(addr)
 	addr += 1
 	set_new_size(width,height)
-	print("FOUND MAP DATA " + str(width) + " x " + str(height))
 func write_building_5b(building : Building,
  						buffer : PackedByteArray, keys : PackedByteArray,
  						addr : Vector2i) -> Vector2i:
@@ -183,7 +182,6 @@ func read_building_5b(buffer : PackedByteArray, addr : int) -> void:
 	var tile_pos_y = buffer.decode_s16(addr)
 	addr += 2
 	spawn_building(id,Vector2i (tile_pos_x,tile_pos_y))
-	print("FOUND BUILDING " + str(id) + " AT POS " + str(tile_pos_x) + "," + str(tile_pos_y))
 func read_keys(keys : PackedByteArray) -> Array[Vector2i]:
 	var addr = 0
 	var keys_content : Array[Vector2i]

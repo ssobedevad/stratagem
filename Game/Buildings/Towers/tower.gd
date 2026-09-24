@@ -4,6 +4,7 @@
 @export var _range_indicator : Sprite2D
 @export var _range : float
 @export var _attack_speed : float
+@export var _damage : int
 
 var _attack_timer : float
 var _attack_time : float

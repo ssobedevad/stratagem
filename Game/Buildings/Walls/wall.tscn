@@ -82,6 +82,7 @@ input_pickable = true
 shape = SubResource("CircleShape2D_rqtnn")
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=197032930]
+visible = false
 z_index = 1
 anchors_preset = -1
 offset_left = -10.0

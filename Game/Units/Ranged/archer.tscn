@@ -1,9 +1,10 @@
-[gd_scene format=4 uid="uid://bubd8pdvfb6yd"]
+[gd_scene format=4 uid="uid://dld1ktar4ig5d"]
 
-[ext_resource type="Script" uid="uid://btvsbyitwf313" path="res://Game/Units/Melee/swordsman.gd" id="1_4aaym"]
+[ext_resource type="Script" uid="uid://bhui7xhih6d4v" path="res://Game/Units/Ranged/archer.gd" id="1_8odhq"]
+[ext_resource type="PackedScene" uid="uid://1yt8dxfwps3n" path="res://Game/Projectiles/Unit/arrow_proj.tscn" id="2_c2cri"]
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_g27e6"]
-_data = PackedByteArray("AAADAAUAAAABAAAAEAAAABAAAACaAAAAUklGRpIAAABXRUJQVlA4TIYAAAAvD8ADEDegpm0kNnc02pfxtycTwfgWdiEk0L+Msyto24YplTJ4gzH+HAZi0vwHgPVkX42Qc18vgYNIthppvoO/SUAyAFMYOAsbHOBfBCciov8TAEwT46QTkKoBRb03UrW3GO7PKGpvLsV6fw5Hb3/OT13S36FGntdZNdirukCqBjDpxDhNAA==")
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_8odhq"]
+_data = PackedByteArray("AAADAAUAAAABAAAAEAAAABAAAACwAAAAUklGRqgAAABXRUJQVlA4TJsAAAAvD8ADEEegJgCQhhB7xaH/C2oXa6hpJAW6/o6nxw4eMI0bBKCgbRtmMP5jMeCjV23+A0D+/7fQs6yhbmAyrDA8YNBItpNLngaCjY6C/wW0JRhoBpoBlDcNEf1X27YN4zbayRuS2lZ6muBRBWBSco55UOXBLaNVRNiwRMHt6ROE6YW9hPzEFch9xb4XZHudH7MpAb7//vPz3+dfAQA=")
 size_override = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4aaym"]
@@ -33,22 +34,23 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[node name="Swordsman" type="RigidBody2D" unique_id=673799837 node_paths=PackedStringArray("_hitbox", "_health_bar")]
+[node name="Archer" type="RigidBody2D" unique_id=673799837 node_paths=PackedStringArray("_hitbox", "_health_bar")]
 input_pickable = true
 gravity_scale = 0.0
 lock_rotation = true
-script = ExtResource("1_4aaym")
-_max_health = 35
-_range = 0.2
-_move_speed = 2.0
-_attack_speed = 0.6
-_attack_damage = 8
+script = ExtResource("1_8odhq")
+arrow_obj = ExtResource("2_c2cri")
+_max_health = 12
+_range = 2.6
+_move_speed = 1.4
+_attack_speed = 0.5
+_attack_damage = 4
 _hitbox = NodePath(".")
 _health_bar = NodePath("UnitHealthBar")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=33118755]
 texture_filter = 1
-texture = SubResource("PortableCompressedTexture2D_g27e6")
+texture = SubResource("PortableCompressedTexture2D_8odhq")
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }
@@ -67,10 +69,10 @@ metadata/_aseprite_wizard_config_ = {
 "player": "",
 "scale": "1.0",
 "slice": "",
-"source": "res://Game/Units/Melee/swordsman.aseprite",
-"source_uid": 7379346509375168889
+"source": "res://Game/Units/Ranged/archer.aseprite",
+"source_uid": 3905113543636016927
 }
-metadata/_aseprite_wizard_source_file_hash_ = "31ac40f64860234622a4e1db2f6bbe0e"
+metadata/_aseprite_wizard_source_file_hash_ = "6ff8dc77486958abccadfb8312f79b36"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1110167565]
 shape = SubResource("CircleShape2D_4aaym")

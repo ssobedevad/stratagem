@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cqihycxx2mnof" path="res://Game/Map/camera_movement.gd" id="1_60250"]
 [ext_resource type="TileSet" uid="uid://dr8pgmd3hr0cg" path="res://Game/Map/map_tileset.tres" id="2_1sios"]
+[ext_resource type="Script" uid="uid://d2k0w5avh6ypf" path="res://UI/Game/PlayMode/Toolbar/play_mode_toolbar.gd" id="4_hmdl1"]
 [ext_resource type="Texture2D" uid="uid://tbnxea15x04a" path="res://Game/Buildings/Gems/SmallGem.png" id="4_tfscm"]
 [ext_resource type="Texture2D" uid="uid://df72ujbr3g7a0" path="res://UI/Game/PlayMode/Toolbar/Cross.png" id="5_hmdl1"]
 [ext_resource type="Script" uid="uid://bher5i0q6v545" path="res://UI/Game/PlayMode/UnitList/unit_list.gd" id="6_hmdl1"]
@@ -38,12 +39,15 @@ offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
 
-[node name="Toolbar" type="Panel" parent="CanvasLayer/PlayModeUI" unique_id=1441901642]
+[node name="Toolbar" type="Panel" parent="CanvasLayer/PlayModeUI" unique_id=1441901642 node_paths=PackedStringArray("tile_map_play", "home_button")]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 48.0
 grow_horizontal = 2
+script = ExtResource("4_hmdl1")
+tile_map_play = NodePath("../../../Ground/Map")
+home_button = NodePath("HomeButton")
 
 [node name="LevelName" type="Label" parent="CanvasLayer/PlayModeUI/Toolbar" unique_id=1704775424]
 layout_mode = 0
@@ -91,6 +95,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_hmdl1")
+
+[node name="HomeButton" type="Button" parent="CanvasLayer/PlayModeUI/Toolbar" unique_id=1123455288]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -16.0
+offset_right = -8.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Home"
 
 [node name="UnitList" type="ScrollContainer" parent="CanvasLayer/PlayModeUI" unique_id=1562642168 node_paths=PackedStringArray("_item_list", "_tile_map")]
 layout_mode = 0
