@@ -29,22 +29,6 @@ func kill():
 func _get_tile_pos() -> Vector2i:
 	var local_pos = global_position - tile_map.global_position
 	return tile_map.local_to_map(local_pos)
-
+	
 func can_target(possible : Health) -> bool:
 	return true
-	
-func valid_target(possible : Health) -> bool:
-	return true
-
-func get_target():
-	var possible = tile_map.all_targettable
-	var current_dist = INT32_MAX
-	var current_target = null
-	for new_target in possible:
-		if new_target == null: continue
-		if !can_target(new_target) or !valid_target(new_target): continue
-		var dist = (new_target.global_position - global_position).length()
-		if dist < current_dist:
-			current_target = new_target
-			current_dist = dist
-	target = current_target

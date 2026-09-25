@@ -28,7 +28,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		var source_id = get_cell_source_id(cell_coords)
 		if source_id == -1: return
 		if unit_index < 0: return
-		if stop_place[cell_coords]:
+		if stop_place.has(cell_coords) and stop_place[cell_coords]:
 			print("STOP PLACE")
 			return
 		spawn_unit(unit_index,to_global(local_pos))

@@ -7,6 +7,7 @@ var gem_objects : Array[PackedScene]
 var building_objects : Array[PackedScene]
 var tower_objects : Array[PackedScene]
 var trap_objects : Array[PackedScene]
+var terrain_objects : Array[PackedScene]
 
 var unit_objects : Array[PackedScene]
 
@@ -16,9 +17,12 @@ func get_all_objects() -> Array[PackedScene]:
 	all_objects.append_array(building_objects)
 	all_objects.append_array(tower_objects)
 	all_objects.append_array(trap_objects)
+	all_objects.append_array(terrain_objects)
 	return all_objects
 
 func get_object_from_id(id : int) -> PackedScene:
+	if id >= 150:
+		return terrain_objects[id - 150]
 	if id >= 100:
 		return trap_objects[id - 100]
 	if id >= 50:
@@ -48,6 +52,7 @@ func _ready() -> void:
 	building_objects = bdb.building_objects
 	tower_objects = bdb.tower_objects
 	trap_objects = bdb.trap_objects
+	terrain_objects = bdb.terrain_objects
 	var udb : UnitDatabase = Autoload.get_node("./UnitDatabase")
 	unit_objects = udb.unit_objects
 	if (Autoload as AutoloadGlobalData).loading_map_data.size() == 2:
@@ -123,26 +128,6 @@ func spawn_building(buildingID : int, pos : Vector2i):
 	return true
 
 #region save_load
-func write_u8(key : SAVE_DATA_KEY, value : int,
- 						buffer : PackedByteArray, keys : PackedByteArray,
- 						addr : Vector2i) -> Vector2i:
-	keys.encode_u8(addr.y,value)
-	addr.y += 1
-	keys.encode_u16(addr.y,addr.x)
-	addr.y += 2
-	buffer.encode_u8(addr.x,value)
-	addr.x += 1
-	return addr
-func write_s16(key : SAVE_DATA_KEY, value : int,
- 						buffer : PackedByteArray, keys : PackedByteArray,
- 						addr : Vector2i) -> Vector2i:
-	keys.encode_u8(addr.y,key)
-	addr.y += 1
-	keys.encode_u16(addr.y,addr.x)
-	addr.y += 2
-	buffer.encode_s16(addr.x,value)
-	addr.x += 2
-	return addr
 func write_map_data_2b(buffer : PackedByteArray, keys : PackedByteArray,
  						addr : Vector2i) -> Vector2i:
 	keys.encode_u8(addr.y,SAVE_DATA_KEY.MAP_DATA_2b)
@@ -160,6 +145,32 @@ func read_map_data_2b(buffer : PackedByteArray, addr : int) -> void:
 	height = buffer.decode_u8(addr)
 	addr += 1
 	set_new_size(width,height)
+func write_tile_5b(pos : Vector2i,
+ 						buffer : PackedByteArray, keys : PackedByteArray,
+ 						addr : Vector2i) -> Vector2i:
+	keys.encode_u8(addr.y,SAVE_DATA_KEY.TILE_DATA_5b)
+	addr.y += 1
+	keys.encode_u16(addr.y,addr.x)
+	addr.y += 2
+	buffer.encode_u8(addr.x,get_cell_atlas_coords(pos).x)
+	addr.x += 1
+	buffer.encode_s16(addr.x,pos.x)
+	addr.x += 2
+	buffer.encode_s16(addr.x,pos.y)
+	addr.x += 2
+	print("WRITE TILE " +str(pos) + " WITH TEX COORD " + str(get_cell_atlas_coords(pos)))
+	return addr
+func read_tile_5b(buffer : PackedByteArray, addr : int) -> void:
+	var id = buffer.decode_u8(addr)
+	addr += 1
+	var tile_pos_x = buffer.decode_s16(addr)
+	addr += 2
+	var tile_pos_y = buffer.decode_s16(addr)
+	addr += 2
+	var pos = Vector2i (tile_pos_x,tile_pos_y)
+	var coords = get_cell_atlas_coords(pos)
+	set_cell(pos,0,Vector2i(id,coords.y))	
+	print("READ TILE " +str(pos) + " WITH TEX COORD " + str(Vector2i(id,coords.y)))
 func write_building_5b(building : Building,
  						buffer : PackedByteArray, keys : PackedByteArray,
  						addr : Vector2i) -> Vector2i:
@@ -208,9 +219,17 @@ func get_save_game_buffers() -> Array[PackedByteArray]:
 	var addr = Vector2i (0,0)
 	addr = write_map_data_2b(buffer,keys,addr)
 	var all_buildings =  all_buildings()
+	
+	for x in width:
+		for y in height:
+			var pos = Vector2i(x,y)
+			if get_cell_atlas_coords(pos).x >= 2:
+				addr = write_tile_5b(pos,buffer,keys,addr)
+				
 	for i in all_buildings.size():
 		var building = all_buildings[i]
 		addr = write_building_5b(building,buffer,keys,addr)
+		
 	buffer.resize(addr.x)
 	keys.resize(addr.y) 
 	return [keys,buffer]
@@ -222,15 +241,22 @@ func load_map(file_path):
 	var buffer_size = file.get_16()
 	var buffer = file.get_buffer(buffer_size)
 	load_map_from_buffers([keys,buffer])
-enum SAVE_DATA_KEY {MAP_DATA_2b,BUILDING_5b}
+	
+enum SAVE_DATA_KEY {MAP_DATA_2b,BUILDING_5b,TILE_DATA_5b}
 
 func load_map_from_buffers(save_game_buffers : Array[PackedByteArray]):
 	var keys = save_game_buffers[0]
 	var buffer = save_game_buffers[1]
 	var file_content = read_keys(keys)
 	for key in file_content:
+		print("DO KEY" + str(key.x))
 		if key.x == SAVE_DATA_KEY.MAP_DATA_2b:
 			read_map_data_2b(buffer,key.y)
-		if key.x == SAVE_DATA_KEY.BUILDING_5b:
+		elif key.x == SAVE_DATA_KEY.BUILDING_5b:
 			read_building_5b(buffer,key.y)	
+		elif key.x == SAVE_DATA_KEY.TILE_DATA_5b:
+			print("READ TILE 5b")
+			read_tile_5b(buffer,key.y)	
+		else:
+			print("UNKNOWN KEY" + str(key.x))
 #endregion

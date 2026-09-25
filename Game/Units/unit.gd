@@ -7,6 +7,7 @@
 @export var _attack_damage : int
 @export var _hitbox : RigidBody2D
 @export var _health_bar : ProgressBar
+@export var _flying : bool
 
 var _attack_timer : float
 var _attack_time : float
@@ -19,7 +20,7 @@ var _current_path : Array[Vector2]
 @abstract func get_unit_id() -> int
 
 func get_wall_target_cost():
-	return 20
+	return 100
 
 func _ready():
 	init_health(_max_health)
@@ -144,7 +145,8 @@ func _set_route_and_target():
 			for nb in tile_neighbors:
 				var nb_pos = current.pos + nb
 				if !_has_tile_at_pos(nb_pos): continue
-				if nb_pos != end_pos and tile_map.tile_buildings.has(nb_pos) and tile_map.tile_buildings[nb_pos] != null and tile_map.tile_buildings[nb_pos] != t.health: continue
+				if !_flying:
+					if nb_pos != end_pos and tile_map.tile_buildings.has(nb_pos) and tile_map.tile_buildings[nb_pos] != null and tile_map.tile_buildings[nb_pos] != t.health: continue
 				var newCost = cost_so_far[current.pos] + 1
 				if !cost_so_far.has(nb_pos) or newCost < cost_so_far[nb_pos]:
 					cost_so_far[nb_pos] = newCost

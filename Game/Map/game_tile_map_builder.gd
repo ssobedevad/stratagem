@@ -91,8 +91,12 @@ func _can_place_building(pos: Vector2i) -> bool:
 	return can_place_building(building,pos)
 
 func _place_building(pos: Vector2i) -> bool:
-	if (!has_current_building() || _can_place_building(pos) == false):
-		return false
-	spawn_building(building_index, pos)
+	var building = get_object_from_id(building_index).instantiate()
+	if building is Building:
+		if (!has_current_building() || _can_place_building(pos) == false):
+			return false
+		spawn_building(building_index, pos)
+	elif building is Terrain:
+		building._on_place(pos,self)
 	return true
 	

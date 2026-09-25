@@ -50,6 +50,7 @@ _range_indicator = NodePath("Base/RangeIndicator")
 _range = 4.0
 _attack_speed = 0.5
 _damage = 5
+_target_mode = 2
 _top_right = Vector2i(2, -1)
 _bottom_left = Vector2i(0, 1)
 _pivot = Vector2(8, -8)

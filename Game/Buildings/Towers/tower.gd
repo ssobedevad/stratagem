@@ -5,9 +5,12 @@
 @export var _range : float
 @export var _attack_speed : float
 @export var _damage : int
+@export var _target_mode : target_mode
 
 var _attack_timer : float
 var _attack_time : float
+
+enum target_mode {GROUND,AIR,GROUND_AND_AIR}
 
 func _range_pixels():
 	return (_range * 16 + 16)
@@ -33,6 +36,21 @@ func _clicked(viewport: Viewport, event: InputEvent, shape_idx: int):
 
 func valid_target(possible : Health) -> bool:
 	if !possible is Unit: return false
+	if possible._flying and _target_mode == target_mode.GROUND: return false
+	if !possible._flying and _target_mode == target_mode.AIR: return false
 	var dist = (possible.global_position - global_position).length()
 	if dist > _range_pixels(): return false
 	return true
+
+func get_target():
+	var possible = tile_map.all_targettable
+	var current_dist = INT32_MAX
+	var current_target = null
+	for new_target in possible:
+		if new_target == null: continue
+		if !can_target(new_target) or !valid_target(new_target): continue
+		var dist = (new_target.global_position - global_position).length()
+		if dist < current_dist:
+			current_target = new_target
+			current_dist = dist
+	target = current_target

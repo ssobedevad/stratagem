@@ -7,9 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://cu6l6itcsy4f7" path="res://Game/Buildings/Towers/cannon_tower.tscn" id="4_f2na2"]
 [ext_resource type="Script" uid="uid://wrh2rlmarl5w" path="res://unit_database.gd" id="6_f2na2"]
 [ext_resource type="PackedScene" uid="uid://c3j2f1vuvtdue" path="res://Game/Buildings/Towers/archer_tower.tscn" id="6_m0rrb"]
+[ext_resource type="PackedScene" uid="uid://bxtsnewqufak8" path="res://Game/Map/Terrain/water.tscn" id="7_4xmfm"]
 [ext_resource type="PackedScene" uid="uid://bubd8pdvfb6yd" path="res://Game/Units/Melee/swordsman.tscn" id="7_scw74"]
 [ext_resource type="PackedScene" uid="uid://dld1ktar4ig5d" path="res://Game/Units/Ranged/archer.tscn" id="8_srpg3"]
 [ext_resource type="PackedScene" uid="uid://be3fv1emoik7s" path="res://Game/Units/Melee/thief.tscn" id="10_ahohe"]
+[ext_resource type="PackedScene" uid="uid://c3st7hiljn777" path="res://Game/Units/Ranged/harpy.tscn" id="11_ee6tv"]
 
 [node name="Autoload" type="Node2D" unique_id=1017996096]
 script = ExtResource("1_gf8d3")
@@ -19,7 +21,8 @@ script = ExtResource("1_bphty")
 gem_objects = Array[PackedScene]([ExtResource("2_bgs5k")])
 building_objects = Array[PackedScene]([ExtResource("3_gf8d3")])
 tower_objects = Array[PackedScene]([ExtResource("4_f2na2"), ExtResource("6_m0rrb")])
+terrain_objects = Array[PackedScene]([ExtResource("7_4xmfm")])
 
 [node name="UnitDatabase" type="Node2D" parent="." unique_id=643857028]
 script = ExtResource("6_f2na2")
-unit_objects = Array[PackedScene]([ExtResource("7_scw74"), ExtResource("8_srpg3"), ExtResource("10_ahohe")])
+unit_objects = Array[PackedScene]([ExtResource("7_scw74"), ExtResource("8_srpg3"), ExtResource("10_ahohe"), ExtResource("11_ee6tv")])
